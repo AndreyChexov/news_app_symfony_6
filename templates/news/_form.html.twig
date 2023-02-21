@@ -1,0 +1,7 @@
+{{ form_start(form, {attr: { class: 'auth_form'}}) }}
+
+<h1 style="margin-top: 10px">Создать новость</h1>
+    {{ form_widget(form) }}
+    <button class="btn" style="margin-top: 10px">{{ button_label|default('Создать') }}</button>
+<a href="{{ path('app_profile') }}" style="margin-top: 10px">Вернуться в профиль</a>
+{{ form_end(form) }}

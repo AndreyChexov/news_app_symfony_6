@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ user.getName }}{% endblock %}
+
+{% block body %}
+
+<form class='auth_form profile'>
+        <h1 class="profile_name">Hello, {{ user.getName }}</h1>
+        <a class="create_new" href="{{ path('app_news_new') }}">Создать статью</a>
+        {# <a class="create_new" href="{{ path('app_news_') }}">Мои статьи</a>
+        <a class="create_new" href="{{ path('app_news_') }}">Мои Комментарии</a> #}
+
+        <a href="/portal?path=news" style="margin-bottom: 10px;">Вернуться к новостям...</a>
+        <a href="{{ path('app_logout') }}">Выход</a>
+
+</form>
+
+
+{% endblock %}

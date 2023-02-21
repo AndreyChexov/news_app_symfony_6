@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}News{% endblock %}
+
+{% block body %}
+
+        {% for news in news %}
+
+        <section class="news">
+    <div class="news_wrapper container">
+        <div class="main_news">
+          
+            <div class="main_news_card" style='background: grey'>
+                <div class="main_news_data"><?php echo  $news['data']?></div>
+
+                    <div class="main_news_name">{{ news.newsName }}</div>
+
+
+                    <div class="main_news_text">
+                    {{ news.newsText }}
+                    </div>
+                    <div class="main_news_footer">
+                <div class="main_news_author">{{ news.newsAuthor }}</div>
+                    <a class="main_news_link" href="{{ path('app_news_show', {'id': news.id}) }}">Подробнее...</a>
+            </div>
+
+          </div>
+   
+
+        </div>
+    </div>
+
+</section>
+
+        {% else %}
+            <tr>
+                <td colspan="7">Новостей нет</td>
+            </tr>
+        {% endfor %}
+      
+
+{% endblock %}

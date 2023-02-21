@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Мои Новости{% endblock %}
+
+{% block body %}
+    <h1>Мои Новости</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ news.id }}</td>
+            </tr>
+            <tr>
+                <th>News_name</th>
+                <td>{{ news.newsName }}</td>
+            </tr>
+            <tr>
+                <th>News_text</th>
+                <td>{{ news.newsText }}</td>
+            </tr>
+            <tr>
+                <th>News_author</th>
+                <td>{{ news.newsAuthor }}</td>
+            </tr>
+            <tr>
+                <th>News_date</th>
+                <td>{{ news.newsDate ? news.newsDate|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>News_img</th>
+                <td>{{ news.newsImg }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_profile') }}">Вернуться в профиль</a>
+
+    <a href="{{ path('app_news_edit', {'id': news.id}) }}">Изменить</a>
+
+    {{ include('news/_delete_form.html.twig') }}
+{% endblock %}

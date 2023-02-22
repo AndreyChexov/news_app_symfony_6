@@ -29,6 +29,9 @@ class News
     #[ORM\Column(length: 500)]
     private ?string $news_img = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $category = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -90,6 +93,18 @@ class News
     public function setNewsImg(string $news_img): self
     {
         $this->news_img = $news_img;
+
+        return $this;
+    }
+
+    public function getCategory(): ?string
+    {
+        return $this->category;
+    }
+
+    public function setCategory(string $category): self
+    {
+        $this->category = $category;
 
         return $this;
     }

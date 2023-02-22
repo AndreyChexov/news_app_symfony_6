@@ -19,47 +19,12 @@
     </head>
     <body>
         
-<header>
-    <div class='header_wrapper container'>
-            <a href="/" style="text-decoration: none; color: white;" class="label">News portal</a>
-
-        <form class="dropdown">
-            <button class="dropbtn">Категории</button>
-
-            <div class="dropdown-content">
-                <a href="/">Все новости</a>
-                <a href="/portal?path=news/category/&name=Животные">Животные</a>
-                <a href="/portal?path=news/category/&name=Города">Города</a>
-                <a href="/portal?path=news/category/&name=Автомобили">Автомобили</a>
-            </div>
-
-        </form>
-                    
-                        <div class="profile_div">
-                            <a href="{{ path('app_profile') }}"> 
-                                <img class="profile_on" src="build/icons/free-icon-user-1550584.png"  alt="user_avatar">
-                            </a>
-                            <p class="profile_p"></p>
-                        
-                      
-                    <a class="enter_btn" href="{{ path('app_login') }}"><button>Войти</button></a>
-                        
-                    </div>
-       
-     
-
-    </div>
-
-</header>
-
+        {{ include('header/index.html.twig')}}
 
         {% block body %}
-       
+    
+        
     {% endblock %}
-
-        <footer>
-        <h1>Made by Chexov</h1>
-    </footer>
-
+ 
     </body>
 </html>

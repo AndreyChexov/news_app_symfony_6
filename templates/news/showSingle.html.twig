@@ -3,7 +3,7 @@
 {% block title %}{{ news.newsName }}{% endblock %}
 
 {% block body %}
-
+    
         <div class="news_page container">
             <div class="news_page_name" style="background: grey">{{ news.newsName }}</div>
             <div class="news_page_text">{{ news.newsText }}</div>
@@ -11,36 +11,38 @@
                 <div>Автор: {{ news.newsAuthor }}</div>
                 <div>{{ news.newsDate ? news.newsDate|date('Y-m-d H:i:s') : '' }}</div>
             </div>
-
         </div>
 
+              
+              {{ form_start(form, {attr: {class: 'auth_form'}}) }}
+              {{ form_widget(form.text) }}
+              {{ form_widget(form.page, {attr: {value: news.id}}) }}
+              {{ form_widget(form.author, {attr: {value: user.name}}) }}
+              {{ form_widget(form.date, {attr: { value: date }}) }}
+              <button class="btn" type="submit" style='margin-top: 10px'>Оставить коменнтарий</button>
 
-              <form class="comments comment_form">
-
-                  
-                  <textarea class="text_comment" type="text" name="text"></textarea>
-                  <input name="page" type="hidden" value={{ news.id }}>
-                  <input name="name" type="hidden" value={{ news.newsAuthor }}>
-                  <input name="name" type="hidden" value={{ news.newsAuthor }}>
-                  <button class="comment_btn" type="submit">Оставить комментарий</button>
-                  
-                  <label for="" style="margin-top: 40px; font-size: 20px">Комментарии:</label>
-                  
-              </form>
-                      
-
-
+            <label for="" style="margin-top: 40px; font-size: 20px">Комментарии:</label>
+          {{ form_end(form) }}
+          
+          
+       {% for comments in comments %} 
+       
+       {% if comments.page == news.id %}
+       
       <div class="list_comments">
       <div class="list_comments_wrapper">
-      <div class="text_comment"><? echo $comments['text']?></div>
+      <div class="text_comment">{{ comments.getText }}</div>   
       <div class="wrapper_for_details">
-          <div class="time_comment"><? echo $comments['time']?></div>
-          <div class="author_comment">Автор: <? echo  $comments['author']?></div>
-<!--                                <a class="comments_answer_btn" href="#">Ответить</a>-->
-          <form>
+          <div class="time_comment">{{ comments.date ? comments.date|date('Y-m-d H:i:s') : '' }}</div>
+          <div class="author_comment">Автор: {{ comments.getAuthor }}</div>
+          <a class="comments_answer_btn" href="#">Ответить</a>
+          
+        {% endif %}
+      {% endfor %}
+          {# <form>
               <input type="hidden" value="<?echo $comments['id']?>">
               <input type="submit" class="comments_answer_btn" value="Ответить">
-          </form>
+          </form> #}
 
       </div>
 

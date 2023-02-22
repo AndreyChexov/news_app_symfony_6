@@ -1,14 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}News index{% endblock %}
+{% block title %}Мои новости{% endblock %}
 
 {% block body %}
-    <h1>News index</h1>
+    <h1>Мои новости</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>News_name</th>
                 <th>News_text</th>
                 <th>News_author</th>
@@ -19,18 +18,19 @@
         </thead>
         <tbody>
         {% for news in news %}
+
+        {% if news.newsAuthor == user.name %}
             <tr>
-                <td>{{ news.id }}</td>
                 <td>{{ news.newsName }}</td>
                 <td>{{ news.newsText }}</td>
                 <td>{{ news.newsAuthor }}</td>
                 <td>{{ news.newsDate ? news.newsDate|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ news.newsImg }}</td>
                 <td>
-                    <a href="{{ path('app_news_show', {'id': news.id}) }}">show</a>
-                    <a href="{{ path('app_news_edit', {'id': news.id}) }}">edit</a>
+                    <a href="{{ path('app_news_edit', {'id': news.id}) }}">Редактировать</a>
                 </td>
             </tr>
+        {% endif %}
         {% else %}
             <tr>
                 <td colspan="7">no records found</td>
@@ -39,5 +39,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_news_new') }}">Create new</a>
+    <a href="{{ path('app_news_new') }}">Создать новую статью</a>
 {% endblock %}

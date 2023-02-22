@@ -4,6 +4,10 @@ namespace App\Form;
 
 use App\Entity\News;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -13,12 +17,19 @@ class NewsType extends AbstractType
     {
         $builder
             ->add('news_name')
-            ->add('news_text')
+            ->add('news_text', TextareaType::class)
             ->add('news_author')
             ->add('news_date')
-            ->add('news_img')
-        ;
-    }
+            ->add('news_img', FileType::class)
+            ->add('category', ChoiceType::class, [
+                'choices' => [
+                    'animals' => 'animals',
+                    'cars' => 'cars',
+                    'cities' => 'cities'
+                ]
+            ]);
+
+        }
 
     public function configureOptions(OptionsResolver $resolver): void
     {

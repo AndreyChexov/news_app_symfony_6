@@ -1,0 +1,34 @@
+
+<header>
+    <div class='header_wrapper container'>
+            <a href="/" style="text-decoration: none; color: white;" class="label">News portal</a>
+
+        <form class="dropdown">
+            <button class="dropbtn">Категории</button>
+
+            <div class="dropdown-content">
+                <a href="{{ path('app_news_index') }}">Все новости</a>
+                <a href="{{ path('app_news_animals') }}">Животные</a>
+                <a href="{{ path('app_news_cities') }}">Города</a>
+                <a href="{{ path('app_news_cars') }}">Автомобили</a>
+            </div>
+            
+        </form>
+                    
+                        <div class="profile_div">
+                            <a href="{{ path('app_profile') }}"> 
+                                <img class="profile_on" src="build/icons/free-icon-user-1550584.png"  alt="user_avatar">
+                            </a>
+                            <p class="profile_p"></p>
+                        
+                    <a class="enter_btn" href="{{ path('app_login') }}"><button>Войти</button></a>
+                        
+                    </div>
+       
+               
+
+    </div>
+
+</header>
+
+

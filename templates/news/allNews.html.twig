@@ -1,15 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}News{% endblock %}
+{% block title %}Новости{% endblock %}
 
 {% block body %}
 
-        {% for news in news %}
+        
 
         <section class="news">
     <div class="news_wrapper container">
         <div class="main_news">
-          
+        {% for news in news %}
             <div class="main_news_card" style='background: grey'>
                 <div class="main_news_data"><?php echo  $news['data']?></div>
 
@@ -25,18 +25,18 @@
             </div>
 
           </div>
-   
+          {% else %}
 
         </div>
     </div>
 
 </section>
 
-        {% else %}
+        
             <tr>
                 <td colspan="7">Новостей нет</td>
             </tr>
         {% endfor %}
-      
+   
 
 {% endblock %}

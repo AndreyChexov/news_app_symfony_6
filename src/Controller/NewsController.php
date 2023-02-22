@@ -84,6 +84,8 @@ class NewsController extends AbstractController
         $news = new News();
         $form = $this->createForm(NewsType::class, $news);
         $form->handleRequest($request);
+        $user = $this->getUser();
+        $date = date('Y-m-d H:i:s');
 
         if ($form->isSubmitted() && $form->isValid()) {
             $newsRepository->save($news, true);
@@ -94,6 +96,8 @@ class NewsController extends AbstractController
         return $this->render('news/new.html.twig', [
             'news' => $news,
             'form' => $form,
+            'user' => $user,
+            'date' => $date
         ]);
     }
    
@@ -134,7 +138,7 @@ class NewsController extends AbstractController
             return $this->redirectToRoute('app_news_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('news/edit.html.twig', [
+        return $this->render('news/edit.html.twig', [
             'news' => $news,
             'form' => $form,
         ]);

@@ -23,8 +23,8 @@ class News
     #[ORM\Column(length: 255)]
     private ?string $news_author = null;
 
-    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    private ?\DateTimeInterface $news_date = null;
+    #[ORM\Column(length: 255)]
+    private ?string $news_date = null;
 
     #[ORM\Column(length: 500)]
     private ?string $news_img = null;
@@ -73,12 +73,12 @@ class News
         return $this;
     }
 
-    public function getNewsDate(): ?\DateTimeInterface
+    public function getNewsDate(): ?string
     {
         return $this->news_date;
     }
 
-    public function setNewsDate(\DateTimeInterface $news_date): self
+    public function setNewsDate(string $news_date): self
     {
         $this->news_date = $news_date;
 

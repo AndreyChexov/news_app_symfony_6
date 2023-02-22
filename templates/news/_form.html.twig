@@ -1,7 +1,13 @@
 {{ form_start(form, {attr: { class: 'auth_form'}}) }}
 
 <h1 style="margin-top: 10px">Создать новость</h1>
-    {{ form_widget(form) }}
+    {{ form_widget(form.news_date, {attr: { value: date }}) }}
+    {{ form_widget(form.news_author, {attr: { value: user.name }}) }}
+    {{ form_widget(form.news_name, {attr: { placeholder: 'Имя новости' }}) }}
+    {{ form_widget(form.news_text, {attr: { placeholder: 'Введите текст' }}) }}
+    {{ form_widget(form.news_img) }}
+    {{ form_widget(form.category) }}
+    
     <button class="btn" style="margin-top: 10px">{{ button_label|default('Создать') }}</button>
 <a href="{{ path('app_profile') }}" style="margin-top: 10px">Вернуться в профиль</a>
 {{ form_end(form) }}

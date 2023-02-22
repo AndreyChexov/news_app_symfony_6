@@ -18,8 +18,8 @@ class NewsType extends AbstractType
         $builder
             ->add('news_name')
             ->add('news_text', TextareaType::class)
-            ->add('news_author')
-            ->add('news_date')
+            ->add('news_author', HiddenType::class)
+            ->add('news_date', HiddenType::class)
             ->add('news_img', FileType::class)
             ->add('category', ChoiceType::class, [
                 'choices' => [
